@@ -1,0 +1,49 @@
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry]
+name = "qurcol"
+version = "1.0.0"
+description = "qurcol (as in 'query columnar ...') is a command line tool that enables its users to quickly explore the content of a file in a column-oriented storage format"
+license = "Apache License, Version 2.0"
+readme = "README.md"
+homepage = "https://github.com/candidtim/qurcol"
+repository = "https://github.com/candidtim/qurcol"
+keywords = ["qurcol"]
+authors = ["Timur Rubeko <timur@rubeko.com>"]
+
+[tool.poetry.scripts]
+qurcol = "qurcol.cli:main"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+pyarrow = "^0.17.1"
+click = "^7.1.2"
+tabulate = "^0.8.7"
+pytz = "^2020.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.4.2"
+coverage = {extras = ["toml"], version = "^5.1"}
+pytest-cov = "^2.9.0"
+black = "^19.10b0"
+flake8 = "^3.8.2"
+flake8-black = "^0.2.0"
+flake8-import-order = "^0.18.1"
+mypy = "^0.770"
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["qurcol"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.black]
+line-length = 79
+target-version = ['py38']
+include = '\.pyi?$'
